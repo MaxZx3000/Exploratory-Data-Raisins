@@ -78,13 +78,15 @@ Data kismis yang telah diukur dengan menggunakan CVS. Data-data kismis ini beras
     Teknik penanganan missing value yang dilakukan:
     * **Penghapusan outlier:**
       Outlier adalah suatu data yang memiliki nilai yang berada jauh daripada rentang aslinya. Data ini sangat jarang kemunculannya, sehingga bisa memengaruhi nilai prediksi suatu data.
+      
       ![Outlier](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/outlier.png?raw=true)
-    Pada contoh di atas, ada satu data yang nilainya diatas nilai yang seharusnya (titik paling kanan). Maka dari itu, kita harus menghilangkan data tersebut. Salah satu teknik yang digunakan untuk menghapus outlier adalah teknik IDR (Interquartile Range). IDR menggunakan kuartil ketiga (Q3) dan kuartil pertama (Q1) untuk mendapatkan data-data yang berada di antara kuartil-kuartil tersebut. Berikut adalah rumus untuk menentukan nilai dibawah Q1 dan nilai diatas Q3: 
-    ```
-    Batas bawah = Q1 - 1.5 * IQR
-    Batas atas = Q3 + 1.5 * IQR
-    ```
-    Apabila data-data ada di luar nilai tersebut, maka data-data tersebut akan dihapus.
+    
+       Pada contoh di atas, ada satu data yang nilainya diatas nilai yang seharusnya (titik paling kanan). Maka dari itu, kita harus menghilangkan data tersebut. Salah satu teknik yang digunakan untuk menghapus outlier adalah teknik IDR (Interquartile Range). IDR menggunakan kuartil ketiga (Q3) dan kuartil pertama (Q1) untuk mendapatkan data-data yang berada di antara kuartil-kuartil tersebut. Berikut adalah rumus untuk menentukan nilai dibawah Q1 dan nilai diatas Q3: 
+       ```
+       Batas bawah = Q1 - 1.5 * IQR
+       Batas atas = Q3 + 1.5 * IQR
+       ```
+       Apabila data-data ada di luar nilai tersebut, maka data-data tersebut akan dihapus.
 
 3. **Univariate Analysis**: variasi univariate ini bisa digunakan dengan tahap-tahap berikut.
 
