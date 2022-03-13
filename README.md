@@ -60,7 +60,7 @@ Data kismis yang telah diukur dengan menggunakan CVS. Data-data kismis ini beras
 
 **Jumlah data**: 900
 
-**Jumlah label kecimen dan besni**: seimbang (450 data)
+**Jumlah label kecimen dan besni**: seimbang (masing-masing memiliki 450 data)
 
 **Kondisi data**: clean, sehingga jumlah preprocessing pada dataset ini tidak terlalu banyak
 
