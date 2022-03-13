@@ -59,6 +59,7 @@ Data kismis yang telah diukur dengan menggunakan CVS. Data-data kismis ini beras
 * Class: menentukan tipe kismis (kecimen atau besni)
 
 **Jumlah data**: 900
+
 **Jumlah label kecimen dan besni**: seimbang (450 data)
 
 **Kondisi data**: clean, sehingga jumlah preprocessing pada dataset ini tidak terlalu banyak
