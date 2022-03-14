@@ -171,37 +171,45 @@ Ada tiga model yang saya gunakan untuk projek ini:
     * **tol**: angka toleransi agar algoritma berhenti. Ini terjadi apabila angka loss antara iterasi yang sedang dijalankan dan iterasi sebelumnya tidak terlalu berbeda jauh, sehingga bisa dihentikan iterasi algoritma ini.
     * **random_state**: random number generator yang berguna untuk mengacak data. Jika kita menyertakan angka random statenya, kita akan mendapatkan angka yang sama setiap kali kita jalankan algoritmanya, sehingga cocok untuk melakukan debugging algoritma.
 
-Berikut adalah kelenbihan dan kekurangan masing-masing algoritma:
+Berikut adalah kelebihan dan kekurangan masing-masing algoritma:
 
 * **KNN**
-    **Kelebihan:** 
-        * Mudah untuk diimplementasikan dan dimengerti
-        * Hanya membutuhkan satu parameter saja, yaitu jumlah tetangga (K)
-        * Banyak pilihan metrik jarak, seperti Eucledian, Minkowski, Manhattan, dan lain-lain.
-        * Model ini merupakan model non-linear, sehingga cocok untuk diterapkan bila data kita tidak bisa dilatih dengan model yang memprediksi dengan cara linear.
+    
+    * **Kelebihan:** 
+    
+      * Mudah untuk diimplementasikan dan dimengerti
+      * Hanya membutuhkan satu parameter saja, yaitu jumlah tetangga (K)
+      * Banyak pilihan metrik jarak, seperti Eucledian, Minkowski, Manhattan, dan lain-lain.
+      * Model ini merupakan model non-linear, sehingga cocok untuk diterapkan bila data kita tidak bisa dilatih dengan model yang memprediksi dengan cara linear.
         
-    **Kekurangan:** 
-        * Performa lambat jika menggunakan data yang banyak. KNN melihat seluruh dataset yang ada. Time complexitynya memiiki nilai O(MN log (k)). Hal ini juga berlaku untuk dimensi yang tinggi.
-        * KNN menanggap bahwa semua fitur itu berjarak sangat dekat. Salah satu pendekatan yang bisa dilakukan adalah melakukan scaling pada setiap data yang ada.
-        * Rentan terhadap outlier. Hal ini akan lebih berdampak jika kita berhadapan dengan dimensi yang tinggi. Dimensi yang tinggi ini membuat rata-rata jarak pemisahan lebih besar.
+    * **Kekurangan:** 
+
+      * Performa lambat jika menggunakan data yang banyak. KNN melihat seluruh dataset yang ada. Time complexitynya memiiki nilai O(MN log (k)). Hal ini juga berlaku untuk dimensi yang tinggi.
+      * KNN menanggap bahwa semua fitur itu berjarak sangat dekat. Salah satu pendekatan yang bisa dilakukan adalah melakukan scaling pada setiap data yang ada.
+      * Rentan terhadap outlier. Hal ini akan lebih berdampak jika kita berhadapan dengan dimensi yang tinggi. Dimensi yang tinggi ini membuat rata-rata jarak pemisahan lebih besar.
 
 * **Linear Classification dengan SGD**
-    **Kelebihan:**
-        * Lebih cepat, karena hanya satu sampel training yang diproses pada satu waktu.
-        * Performa konvergensi lebih cepat.
     
-   **Kelemahan:**
-        * Pada saat training, jika datanya bersifat noisy, maka gradient descent bisa saja akan menjauh dari titik optima.
-        * Tidak ramah untuk memori, karena kita harus memproses semua data training.
+    * **Kelebihan:**
+      
+      * Lebih cepat, karena hanya satu sampel training yang diproses pada satu waktu.
+      * Performa konvergensi lebih cepat.
+    
+    * **Kelemahan:**
+        
+      * Pada saat training, jika datanya bersifat noisy, maka gradient descent bisa saja akan menjauh dari titik optima.
+      * Tidak ramah untuk memori, karena kita harus memproses semua data training.
         
 * **Linear SVM**
-    **Kelebihan:**
-        * Cocok untuk dataset yang tidak memiliki outlier (tidak ada noise).
-        * Bisa diterapkan untuk dimensi yang tinggi.
     
-    **Kelemahan:**
-        * Peforma rendah jika berurusan dengan dataset yang banyak
-        * Kurang bisa dalam menentukan garis yang tepat untuk dataset dengan kelas yang saling bertabrakkan satu dengan yang lain.
+    * **Kelebihan:**
+      * Cocok untuk dataset yang tidak memiliki outlier (tidak ada noise).
+      * Bisa diterapkan untuk dimensi yang tinggi.
+    
+    * **Kelemahan:**
+      
+      * Peforma rendah jika berurusan dengan dataset yang banyak
+      * Kurang bisa dalam menentukan garis yang tepat untuk dataset dengan kelas yang saling bertabrakkan satu dengan yang lain.
 
 Berikut adalah **hasil training** dari tiga model tersebut (hasil ini sudah diperoleh dengan manual dan grid search parameter tuning):
 
@@ -213,14 +221,18 @@ Linear Classification with SGD: 0.8805031446540881
 Linear SVM: 0.8867924528301887
 ```
 
-Apabila kita perhatikan, perbedaan accuracy antara model yang satu dengan model lainnya tidak terlalu berbeda jauh, jika dicoba beberapa kali. Untuk melihat penyebabnya, berikut adalah visualisasi datanya:
+Apabila kita perhatikan, perbedaan accuracy antara model yang satu dengan model lainnya tidak terlalu berbeda jauh, jika dicoba beberapa kali. Untuk melihat penyebabnya, berikut adalah visualisasi datanya.
+
 ![Visualisasi Data setelah PCA](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/pairplot%202.png?raw=true)
+
 Dari grafik di atas, dengan menggunakan model linear classification sederhana, kita bisa melihat bahwa model tersebut sudah memiliki lokasi dan arah garis pemisahan yang cukup baik, meskipun ada sedikit bagian data yang overlapping. Setelah saya mencoba untuk menggunakan model yang lebih kompleks, seperti KNN dan Linear SVM, saya mendapatkan bahwa accuracy tidak terlalu jauh dengan model linear sederhana. Maka dari itu, dengan menggunakan linear SGD saja, kita sudah bisa mendapatkan nilai yang baik tanpa memerlukan model yang kompleks.
 
 ## Evaluation
 
 Sebelum kita menghitung metrik-metrik yang dibutuhkan untuk klasifikasi, kita bisa menggunakan komponen confusion matrix. Berikut adalah contoh gambar confusion matrix.
+
 ![Contoh Confusion Matrix](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/confusion_matrix.png?raw=true)
+
 Dari gambar confusion matrix di atas, komponen-komponen dasar pembentuk confusion matrix sebagai berikut.
 
 * **True Positive**: jumlah data berlabel **positif** yang diprediksi **benar**.
@@ -231,14 +243,18 @@ Dari gambar confusion matrix di atas, komponen-komponen dasar pembentuk confusio
 Dari penjelasan confusion matrix di atas, kita bisa menghitung metrik-metrik yang dibutuhkan untuk klasifikasi. Berikut adalah evaluasi metrik yang digunakan pada proyek ini.
 
 * **Precision**: nilai yang menunjukkan kemampuan machine learning untuk melakukan prediksi berlabel positif secara tepat.
-Rumus precision adalah sebagai berikut: 
+Rumus precision adalah sebagai berikut.
+
     ![Precision Formula](https://miro.medium.com/max/888/1*C3ctNdO0mde9fa1PFsCVqA.png)
 
 * **Recall**: nilai yang menunjukan jumlah data berlabel positif yang dapat dideteksi, Rumus recall adalah sebagai berikut.
+  
     ![Recall Formula](https://miro.medium.com/max/836/1*dXkDleGhA-jjZmZ1BlYKXg.png)
 
-* **F1-Score**: nilai yang menunjukkan jumlah prediksi benar yang dapat dilakukan. Rumus F1-Score adalah sebagai berikut,
+* **F1-Score**: nilai yang menunjukkan jumlah prediksi benar yang dapat dilakukan. Rumus F1-Score adalah sebagai berikut.
+
     ![F1 Score Formula](https://www.gstatic.com/education/formulas2/397133473/en/f1_score.svg)
+
 * **Support**: jumlah sampel yang benar pada setiap label yang terdapat pada suatu dataset.
 
 * **Accuracy**: nilai pecahan yang menunjukkan rasio antara jumlah data yang diprediksi benar dengan total jumlah data yang ada.
