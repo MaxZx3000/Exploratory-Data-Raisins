@@ -91,47 +91,60 @@ Data kismis yang telah diukur dengan menggunakan CVS. Data-data kismis ini beras
 3. **Univariate Analysis**: variasi univariate ini bisa digunakan dengan tahap-tahap berikut.
 
     * **Categorical Features**
-    Tujuan dari pengukuran fitur-fitur kategorikal aalah agar saya bisa melihat keseimbangan data antar satu label dengan label lainnya.
-    Berikut adalah contoh persebaran datanya.
-    ![Categorical Features Histogram](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/categorical_features.png?raw=true)
-    Dari grafik di atas, kita bisa melihat bahwa persebaran data untuk kecimen dan besni masih seimbang, meskipun dilakukan penghapusan outliers.
+    Tujuan dari pengukuran fitur-fitur kategorikal aalah agar saya bisa melihat keseimbangan data antar satu label dengan label lainnya. Berikut adalah contoh persebaran datanya.
+
+        ![Categorical Features Histogram](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/categorical_features.png?raw=true)
+
+        Dari grafik di atas, kita bisa melihat bahwa persebaran data untuk kecimen dan besni masih seimbang, meskipun dilakukan penghapusan outliers.
     
     * **Numerical Features**
     Di sini, saya melakukan analisis histogram untuk melihat persebaran data pada masing-masing numerik. Berikut adalah contoh data histogram yang saya peroleh.
-    ![Hisrogram Numerical Features](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/numerical_features.png?raw=true)
-    Dari grafik di atas, kita bisa memperoleh data sebagai berikut.
-    * **Field Area, MajorAxisLength, MajorAxisLength, MinorAxisLength** memiliki bentuk kurva yang hampir sama. Ini berarti, ada peluang bahwa mereka memiliki korelasi yang tinggi.
+
+        ![Hisrogram Numerical Features](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/numerical_features.png?raw=true)
+        
+        Dari grafik di atas, kita bisa memperoleh data sebagai berikut.
+
+      * **Field Area, MajorAxisLength, MajorAxisLength, MinorAxisLength** memiliki bentuk kurva yang hampir sama. Ini berarti, ada peluang bahwa mereka memiliki korelasi yang tinggi.
     
-    * **Field Extent dan field eccentricity** tidak memiliki hubungan relasi apapun, maupun field-field yang dijelaskan pada poin sebelumnya.
+      * **Field Extent dan field eccentricity** tidak memiliki hubungan relasi apapun, maupun field-field yang dijelaskan pada poin sebelumnya.
 
 4. **Multivariate Analysis:**
-    * **FacetGrid**
-    Tujuan dari grafik ini adalah cara untuk mengetahui hubungan antara rata-rata nilai masing-masing fitur numerikal dengan fitur kategorikal.
-    ![Contoh plotting facetgrid](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/facet_grid.png?raw=true)
-    Pada contoh grafik di atas, kita bisa melihat bahwa rata-rata pada MajorAxisLength memiliki dampak kecil terhadap kelas kecimen dan besni. Meskipun demikian, mereka memberi informasi bahwa kismis Besni memiliki major axis length lebih besar daripada kismis kecimen.
+    * **FacetGrid**:
+  
+        Tujuan dari grafik ini adalah cara untuk mengetahui hubungan antara rata-rata nilai masing-masing fitur numerikal dengan fitur kategorikal.
+
+        ![Contoh plotting facetgrid](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/facet_grid.png?raw=true)
     
-    * **Pairplot**
-    Pairplot ini bertujuan agar kita bisa melihat korelasi antara dua nilai. Plot ini memberi tahu kita mengenai korelasi antara fitur yang satu dengan fitur yang lainnya. Dengan demikian, kita bisa mereduksi fitur-fitur tersebut dengan teknik dimensionality reduction. Berikut adalah contoh hasil dari pairplot.
-    ![Visualisasi Pairplot](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/pairplot.png?raw=true)
+        Pada contoh grafik di atas, kita bisa melihat bahwa rata-rata pada MajorAxisLength memiliki dampak kecil terhadap kelas kecimen dan besni. Meskipun demikian, mereka memberi informasi bahwa kismis Besni memiliki major axis length lebih besar daripada kismis kecimen.
     
+    * **Pairplot**:
+
+        Pairplot ini bertujuan agar kita bisa melihat korelasi antara dua nilai. Plot ini memberi tahu kita mengenai korelasi antara fitur yang satu dengan fitur yang lainnya. Dengan demikian, kita bisa mereduksi fitur-fitur tersebut dengan teknik dimensionality reduction. Berikut adalah contoh hasil dari pairplot.
+
+        ![Visualisasi Pairplot](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/pairplot.png?raw=true)
+        
     * **Feature Selection dengan algoritma ANOVA**: 
-    ANOVA adalah salah satu algoritma untuk melakukan analisis variance. Variance adalah nilai informasi yang terdapat pada atribut yang ada. Tujuan dari analisis variance ini adalah agar rata-rata dari dua atau lebih sampel data berasal dari distribusi yang sama. ANOVA menggunakan kalkulasi F-Statistic, yaitu suatu tes statistika yang digunakan untuk menghitung kalkulasi rasio antar variance. 
+  
+        ANOVA adalah salah satu algoritma untuk melakukan analisis variance. Variance adalah nilai informasi yang terdapat pada atribut yang ada. Tujuan dari analisis variance ini adalah agar rata-rata dari dua atau lebih sampel data berasal dari distribusi yang sama. ANOVA menggunakan kalkulasi F-Statistic, yaitu suatu tes statistika yang digunakan untuk menghitung kalkulasi rasio antar variance. 
         
         ANOVA ini digunakan ketika ada satu variabel numerik dan satu variabel kategorikal. Hasil akhir dari tes ini digunakan untuk menghapus fitur-fitur yang tidak berkorelasi antar satu sama lain. Untuk melakukan pengecekan terhadap prioritas-prioritas fitur-fitur yang ada, kita bisa menggunakan library Sklearn SelectKBest untuk mengecek skor-skor dari masing-masing fitur.
+        
         ![Skor kepentingan fitur dari ANOVA](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/anova.png?raw=true)
     
         Jika kita menggunakan sklearn, kita bisa melakukan output skoring kepentingan masing-masing fitur terhadap data kategorikal. Pada contoh di atas, kita bisa melihat bahwa fitur 3 dan 6 dapat dihapus, karena memiliki skor kepentingan yang sangat kecil.
 
-* **Feature Selection dengan pearson correlation matrix:**
-Ia menunjukkan relasi kekuatan linear antara dua variabel atau lebih. Correlation matrix ini berfungsi agar kita bisa melihat korelasi fitur berupa numerik. Nilai dari korelasi ini dapat dijabarkan sebagai berikut.
-    * Jika nilai korelasi mendekati **angka -1**, maka korelasi fitur tersebut **kuat** 
-    * Jika nilai korelasi mendekati **angka 0**, maka **tidak ada korelasi** antar fitur-fitur tersebut
-    * Jika nilai korelasi mendekati **angka 1**, maka korelasi fitur tersebut **kuat, namun memiliki makna kebalikan**
-    ![Contoh Correlation Matrix](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/correlation%20matrix_2.png?raw=true)
-
-    Apabila kita coba lihat pada correlation matrix di atas, kita bisa menggabungkan beberapa fitur dengan penjelasan seperti berikut.
-    * ConvexArea dan Area, karena skor korelasinya adalah 1
-    * MajorAxisLength dan Perimeter, karena skor korelasinya adalah 0.98
+   * **Feature Selection dengan pearson correlation matrix:**
+    Ia menunjukkan relasi kekuatan linear antara dua variabel atau lebih. Correlation matrix ini berfungsi agar kita bisa melihat korelasi fitur berupa numerik. Nilai dari korelasi ini dapat dijabarkan sebagai berikut.
+    
+      * Jika nilai korelasi mendekati **angka -1**, maka korelasi fitur tersebut **kuat** 
+      * Jika nilai korelasi mendekati **angka 0**, maka **tidak ada korelasi** antar fitur-fitur tersebut
+      * Jika nilai korelasi mendekati **angka 1**, maka korelasi fitur tersebut **kuat, namun memiliki makna kebalikan**
+  
+      ![Contoh Correlation Matrix](https://github.com/MaxZx3000/Exploratory-Data-Raisins/blob/main/submission-1-images/correlation%20matrix_2.png?raw=true)
+    
+      Apabila kita coba lihat pada correlation matrix di atas, kita bisa menggabungkan beberapa fitur dengan penjelasan seperti berikut.
+      * ConvexArea dan Area, karena skor korelasinya adalah 1
+      * MajorAxisLength dan Perimeter, karena skor korelasinya adalah 0.98
 
 ## Data Preparation
 Dalam proyek saya, saya menerapkan beberapa tahapan persiapan data, yaitu sebagai berikut.
